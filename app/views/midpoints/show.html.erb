@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Midpoint:</strong>
+  <%= @midpoint.midpoint %>
+</p>
+
+<p>
+  <strong>Address 1:</strong>
+  <%= @midpoint.address_1 %>
+</p>
+
+<p>
+  <strong>Address 2:</strong>
+  <%= @midpoint.address_2 %>
+</p>
+
+<%= link_to 'Edit', edit_midpoint_path(@midpoint) %> |
+<%= link_to 'Back', midpoints_path %>

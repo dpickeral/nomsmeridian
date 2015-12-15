@@ -1,0 +1,13 @@
+<%= simple_form_for(@midpoint) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :midpoint %>
+    <%= f.input :address_1 %>
+    <%= f.input :address_2 %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+# == Schema Information
+#
+# Table name: addresses
+#
+#  id          :integer          not null, primary key
+#  address     :string
+#  street1     :string
+#  street2     :string
+#  city        :string
+#  zip         :string
+#  state       :string
+#  country     :string
+#  lattitude   :float
+#  longitude   :float
+#  midpoint_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street1: MyString
+  street2: MyString
+  city: MyString
+  zip: MyString
+  state: MyString
+  country: MyString
+  lattitude: 1.5
+  longitude: 1.5
+
+two:
+  street1: MyString
+  street2: MyString
+  city: MyString
+  zip: MyString
+  state: MyString
+  country: MyString
+  lattitude: 1.5
+  longitude: 1.5
