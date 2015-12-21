@@ -19,4 +19,10 @@
 #
 
 class Address < ActiveRecord::Base
+	geocoded_by :address
+  after_validation :geocode
+end
+
+def coordinates
+	[latitude, longitude]
 end

@@ -24,17 +24,38 @@ class MapsController < ApplicationController
   # POST /maps
   # POST /maps.json
   def create
-    @map = Map.new(map_params)
+    address1 = Address.create(address: params[:address1])
+    address2 = Address.create(address: params[:address2])
+    midpoint = Geocoder::Calculations.geographic_center([address1.coordinates, address2.coordinates])
+    coordinates = { latitude: midpoint[0].round(4), longitude: midpoint[1].round(4) }
+    params = { terms: ('restaurant' 'food') , limit: 5 }
+    #render json: Yelp.client.search_by_coordinates(coordinates, params)
+    #def search
+    #parameters = { term: params[:term], limit: 16 }
+    #render json: Yelp.client.search('San Francisco', parameters)
+    #end
+    #render text: "#{coordinates}"
+    #render text: "midpoint of #{address1.address} and #{address2.address} = #{midpoint}"
+    render json: Yelp.client.search_by_coordinates(coordinates, params)
+    #response.business.each do |b| 
+    #  put business.name
+    #end
+    #results = Yelp.client.search_by_coordinates(coordinates, params)
+    #render text: business.first
+    
 
-    respond_to do |format|
-      if @map.save
-        format.html { redirect_to @map, notice: 'Map was successfully created.' }
-        format.json { render :show, status: :created, location: @map }
-      else
-        format.html { render :new }
-        format.json { render json: @map.errors, status: :unprocessable_entity }
-      end
-    end
+
+    # @map = Map.new(map_params)
+
+    # respond_to do |format|
+    #   if @map.save
+    #     format.html { redirect_to @map, notice: 'Map was successfully created.' }
+    #     format.json { render :show, status: :created, location: @map }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @map.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /maps/1
